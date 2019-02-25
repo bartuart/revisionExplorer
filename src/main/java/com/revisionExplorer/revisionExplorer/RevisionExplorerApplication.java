@@ -13,7 +13,7 @@ public class RevisionExplorerApplication {
 		SpringApplication.run(RevisionExplorerApplication.class, args);
 	}
 
-	@RequestMapping("/success")
+	@RequestMapping("/git")
 	public String showHelloWorld(){
 		return "hello-world";
 	}

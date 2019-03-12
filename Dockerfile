@@ -6,16 +6,6 @@ ADD . /tmp/app
 
 WORKDIR /tmp/app
 
-RUN mvn package
+RUN mvn package && mv target/revisionExplorer-0.0.1-SNAPSHOT.jar /app.jar
 
-WORKDIR /tmp/app/target
-
-RUN ls -l 
-
-
-#OLUME /tmp
-#RUN javac -version
-#RUN mvn -version
-#ARG JAR_FILE
-#COPY ${JAR_FILE} app.jar
-#ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]

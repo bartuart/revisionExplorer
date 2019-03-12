@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '/usr/local/bin/mvn package'
+                sh 'docker build -t 10.0.0.201:5000/revisionExplorer:v01 .'
             }
         }
     }

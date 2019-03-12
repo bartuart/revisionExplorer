@@ -6,7 +6,11 @@ ADD . /tmp/app
 
 WORKDIR /tmp/app
 
-RUN mvn package 
+RUN mvn package
+
+WORKDIR /tmp/app/target
+
+RUN ls -l 
 
 
 #OLUME /tmp

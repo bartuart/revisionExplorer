@@ -1,4 +1,4 @@
-package com.revisions.explorer.revisionExplorer;
+package com.revisionExplorer.revisionExplorer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

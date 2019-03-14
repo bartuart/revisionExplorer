@@ -20,7 +20,6 @@ pipeline {
 		stage('Building image') {
 			steps{
 				script {
-					//docker.build dockerImage
 					dockerImage = docker.build dockerImageFullName 
 				}
 			}

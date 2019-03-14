@@ -45,7 +45,7 @@ pipeline {
 		stage('Hello test'){
 			agent { label 'linux' }
 			steps{
-				sh 'echo Hello Hello'
+				sh 'sudo kubectl get nodes && sudo docker login 10.0.0.201:5000 -u admin -p NexusTest'
 			}
 		}
     }

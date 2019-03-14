@@ -2,7 +2,7 @@ pipeline {
     environment {
 		registry = "$DOCKER_REGISTRY/revisions"
 		registryCredential = "docker-registry"
-		dockerImage = ''
+		dockerImage = registry + ":test"
 	}
 	
 	agent any
@@ -17,7 +17,7 @@ pipeline {
 		stage('Building image') {
 			steps{
 				script {
-					docker.build registry + ":test"
+					docker.build dockerImage
 				}
 			}
 		}

@@ -2,7 +2,8 @@ pipeline {
     environment {
 		registry = "$DOCKER_REGISTRY/revisions"
 		registryCredential = "docker-registry"
-		dockerImage = registry + ":test"
+		dockerTag = "test"
+		dockerImage = $registry + ":" + $dockerTag
 	}
 	
 	agent any

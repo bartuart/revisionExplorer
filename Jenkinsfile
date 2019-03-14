@@ -40,14 +40,12 @@ pipeline {
 				sh "docker rmi $dockerImageFullName"
 			}
 		}
-    }
-	
-	agent ['linux']
-	stages {
+		
+		agent 'linux'
 		stage('Hello test'){
 			steps{
 				sh 'echo Hello Hello'
 			}
 		}
-	}
+    }
 }

@@ -4,7 +4,8 @@ pipeline {
 		image = 'revisions'
 		dockerTag = 'test'
 		registryCredential = 'docker-registry'
-		dockerImage = "$registry/$image:$dockerTag"
+		dockerImageFullName = "$registry/$image:$dockerTag"
+		dockerImage = ''
 	}
 	
 	agent any
@@ -19,7 +20,8 @@ pipeline {
 		stage('Building image') {
 			steps{
 				script {
-					docker.build dockerImage
+					#docker.build dockerImage
+					dockerImage = docker.build dockerImageFullName 
 				}
 			}
 		}
@@ -36,7 +38,7 @@ pipeline {
     
 		stage('Remove Unused docker image') {
 			steps{
-				sh "docker rmi $dockerImage"
+				sh "docker rmi $dockerImageFullName"
 			}
 		}
     }

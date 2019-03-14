@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent { label 'master' }
 	
 	environment {
 		registry = "$DOCKER_REGISTRY"

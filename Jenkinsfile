@@ -1,10 +1,23 @@
 pipeline {
-    agent any
+    environment {
+		registry = "$DOCKER_REGISTRY/revisions"
+		registryCredential = "docker-registry"
+	}
+	
+	agent any
     stages {
         
 		stage('Cloning Git') {
 			steps {
 				git 'https://github.com/bartuart/revisionExplorer.git'
+			}
+		}
+		
+		stage('Building image') {
+			steps{
+				script {
+					docker.build registry + ":test"
+				}
 			}
 		}
 		

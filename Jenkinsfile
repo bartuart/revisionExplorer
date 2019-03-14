@@ -1,5 +1,7 @@
 pipeline {
-    environment {
+    agent any
+	
+	environment {
 		registry = "$DOCKER_REGISTRY"
 		image = 'revisions'
 		dockerTag = 'test'
@@ -8,7 +10,6 @@ pipeline {
 		dockerImage = ''
 	}
 	
-	agent any
     stages {
         
 		stage('Cloning Git') {
@@ -41,8 +42,8 @@ pipeline {
 			}
 		}
 		
-		agent 'linux'
 		stage('Hello test'){
+			agent { label 'linux' }
 			steps{
 				sh 'echo Hello Hello'
 			}

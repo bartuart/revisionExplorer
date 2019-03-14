@@ -27,7 +27,7 @@ pipeline {
 		stage('Put image into Nexus') {
 			steps{
 				script {
-					docker.withRegistry( '', registryCredential ) {
+					docker.withRegistry( "https://registry", registryCredential ) {
 						dockerImage.push()
 					}
 				}

@@ -46,7 +46,7 @@ pipeline {
 			agent { label 'linux' }
 			steps{
 				//sh 'docker login 10.0.0.201:5000 -u admin -p NexusTest && kubectl get nodes'
-				sh "docker login $registry -u admin -p NexusTest && kubectl run revisions --image=$dockerImageFullName --port=3000"
+				sh "docker login $registry -u admin -p NexusTest && docker pull $dockerImageFullName && kubectl run revisions --image=$dockerImageFullName --port=3000"
 			}
 		}
     }

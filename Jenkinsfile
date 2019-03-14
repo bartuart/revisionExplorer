@@ -3,7 +3,7 @@ pipeline {
 		registry = "$DOCKER_REGISTRY/revisions"
 		registryCredential = "docker-registry"
 		dockerTag = "test"
-		dockerImage = $registry + ":" + $dockerTag
+		dockerImage = '$registry + : + $dockerTag'
 	}
 	
 	agent any

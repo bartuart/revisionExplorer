@@ -41,4 +41,13 @@ pipeline {
 			}
 		}
     }
+	
+	agent ['linux']
+	stages {
+		stage('Hello test'){
+			steps{
+				sh 'echo Hello Hello'
+			}
+		}
+	}
 }

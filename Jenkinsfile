@@ -1,9 +1,9 @@
 pipeline {
     environment {
-		registry = "$DOCKER_REGISTRY/revisions"
-		registryCredential = "docker-registry"
-		dockerTag = "test"
-		dockerImage = '$registry + : + $dockerTag'
+		registry = '$DOCKER_REGISTRY/revisions'
+		registryCredential = 'docker-registry'
+		dockerTag = 'test'
+		dockerImage = '$registry:$dockerTag'
 	}
 	
 	agent any
@@ -35,7 +35,7 @@ pipeline {
     
 		stage('Remove Unused docker image') {
 			steps{
-				sh "docker rmi $registry:test"
+				sh "docker rmi $dockerImage"
 			}
 		}
     }

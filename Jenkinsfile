@@ -42,7 +42,7 @@ pipeline {
 			}
 		}
 		
-		stage('Hello test'){
+		stage('Deploy APP into Kubernetes Cluster'){
 			agent { label 'linux' }
 			steps{
 				//sh 'docker login 10.0.0.201:5000 -u admin -p NexusTest && kubectl get nodes'

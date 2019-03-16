@@ -57,7 +57,7 @@ pipeline {
 				
 				sh 'kubectl apply -f kube-deployments/service-test.yml'
 				
-				sh 'kubectl --record deployment.apps/revisions-test set image deployment.v1.apps/revisions-test nginx="$dockerImageFullName"'
+				sh 'kubectl --record deployment.apps/revisions-test set image deployment.v1.apps/revisions-test revisions-test="$dockerImageFullName"'
 			}
 		}
     }

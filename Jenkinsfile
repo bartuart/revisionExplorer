@@ -4,9 +4,10 @@ pipeline {
 	environment {
 		registry = "$DOCKER_REGISTRY"
 		image = 'revisions'
-		dockerTag = 'test'
+		dockerTag = "test_${currentBuild.number}"
 		registryCredential = 'docker-registry'
-		dockerImageFullName = "$registry/$image:$dockerTag"
+		dockerImageName = "$registry/$image"
+		dockerImageFullName = "$dockerImageName:$dockerTag"
 		dockerImage = ''
 	}
 	
@@ -45,9 +46,6 @@ pipeline {
 		stage('Deploy APP into Kubernetes Cluster'){
 			agent { label 'linux' }
 			steps{
-				//sh 'docker login 10.0.0.201:5000 -u admin -p NexusTest && kubectl get nodes'
-				//sh "docker login $registry -u admin -p NexusTest && docker pull $dockerImageFullName && kubectl run revisions --image=$dockerImageFullName --port=3000"
-				
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: registryCredential,
 					usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 						sh 'kubectl get secrets | grep "revisions-reg-key" || kubectl create secret docker-registry revisions-reg-key --docker-server="https://$registry" --docker-username="$USERNAME" --docker-password="$PASSWORD"'
@@ -58,6 +56,8 @@ pipeline {
 				sh 'kubectl apply -f kube-deployments/deployment-test.yml'
 				
 				sh 'kubectl apply -f kube-deployments/service-test.yml'
+				
+				sh 'kubectl --record deployment.apps/revisions-test set image deployment.v1.apps/revisions-test nginx="$dockerImageFullName"'
 			}
 		}
     }

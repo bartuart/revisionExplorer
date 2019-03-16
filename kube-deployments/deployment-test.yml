@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: revisions-test
-        image: 10.0.0.201:5000/revisions:test
+        image: 10.0.0.201:5000/revisions
         ports:
         - containerPort: 8080
         imagePullPolicy: Always

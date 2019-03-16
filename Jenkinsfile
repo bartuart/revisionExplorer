@@ -50,12 +50,10 @@ pipeline {
 				
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: registryCredential,
 					usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-						sh 'echo uname=$USERNAME pwd=$PASSWORD'
+						sh 'kubectl get secrets | grep "revisions-reg-key" || kubectl create secret docker-registry revisions-reg-key --docker-server="https://$registry" --docker-username="$USERNAME" --docker-password="$PASSWORD"'
 					}
 					
 				git 'https://github.com/bartuart/revisionExplorer.git'
-				
-				sh 'kubectl get secrets | grep "revisions-reg-key" || kubectl create secret docker-registry revisions-reg-key --docker-server="https://$registry" --docker-username="$USERNAME" --docker-password="$PASSWORD"'
 				
 				sh 'kubectl apply -f kube-deployments/deployment-test.yml'
 				

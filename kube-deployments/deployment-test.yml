@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: revisions-test
+  labels:
+    run: revisions-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: revisions-test
+  template:
+    metadata:
+      labels:
+        run: revisions-test
+    spec:
+      containers:
+      - name: revisions-test
+        image: 10.0.0.201:5000/revisions:test
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: revisions-reg-key

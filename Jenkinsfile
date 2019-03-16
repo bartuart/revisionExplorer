@@ -54,6 +54,12 @@ pipeline {
 					}
 					
 				git 'https://github.com/bartuart/revisionExplorer.git'
+				
+				sh 'kubectl get secrets | grep "revisions-reg-key" || kubectl create secret docker-registry revisions-reg-key --docker-server="https://"+ $registry --docker-username=$USERNAME --docker-password=$PASSWORD'
+				
+				sh 'kubectl apply -f kube-deployments/deployment-test.yml'
+				
+				sh 'kubectl apply -f kube-deployments/service-test.yml'
 			}
 		}
     }

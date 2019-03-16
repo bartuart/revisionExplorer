@@ -19,6 +19,6 @@ spec:
         image: 10.0.0.201:5000/revisions:test
         ports:
         - containerPort: 8080
-      imagePullPolicy: Always
+        imagePullPolicy: Always
       imagePullSecrets:
         - name: revisions-reg-key

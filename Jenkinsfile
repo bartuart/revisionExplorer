@@ -52,6 +52,8 @@ pipeline {
 					usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 						sh 'echo uname=$USERNAME pwd=$PASSWORD'
 					}
+					
+				git 'https://github.com/bartuart/revisionExplorer.git'
 			}
 		}
     }

@@ -9,6 +9,7 @@ pipeline {
 		dockerImageName = "$registry/$image"
 		dockerImageFullName = "$dockerImageName:$dockerTag"
 		dockerImage = ''
+		JAR_FILE = target/revisionExplorer-0.0.1-SNAPSHOT.jar
 	}
 	
 	tools {
@@ -30,7 +31,7 @@ pipeline {
 			}
 		}
 		
-		/* stage('Building image') {
+		stage('Building image') {
 			steps{
 				script {
 					dockerImage = docker.build dockerImageFullName 
@@ -38,7 +39,7 @@ pipeline {
 			}
 		}
 		
-		stage('Put image into Nexus') {
+		/*stage('Put image into Nexus') {
 			steps{
 				script {
 					docker.withRegistry( "https://"+ registry, registryCredential ) {

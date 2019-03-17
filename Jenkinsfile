@@ -16,10 +16,11 @@ pipeline {
 		stage('Cloning Git') {
 			steps {
 				git 'https://github.com/bartuart/revisionExplorer.git'
+				sh 'mvn package'
 			}
 		}
 		
-		stage('Building image') {
+		/* stage('Building image') {
 			steps{
 				script {
 					dockerImage = docker.build dockerImageFullName 
@@ -59,6 +60,6 @@ pipeline {
 				
 				sh 'kubectl --record deployment.apps/revisions-test set image deployment.v1.apps/revisions-test revisions-test="$dockerImageFullName"'
 			}
-		}
+		} */
     }
 }

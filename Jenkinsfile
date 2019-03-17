@@ -9,7 +9,6 @@ pipeline {
 		dockerImageName = "$registry/$image"
 		dockerImageFullName = "$dockerImageName:$dockerTag"
 		dockerImage = ''
-		JAR_FILE = 'target/revisionExplorer-0.0.1-SNAPSHOT.jar'
 	}
 	
 	tools {
@@ -34,6 +33,7 @@ pipeline {
 		stage('Building image') {
 			steps{
 				script {
+					JAR_FILE = 'target/revisionExplorer-0.0.1-SNAPSHOT.jar'
 					dockerImage = docker.build dockerImageFullName 
 				}
 			}

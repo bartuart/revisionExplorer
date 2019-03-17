@@ -39,7 +39,7 @@ pipeline {
 			}
 		}
 		
-		/*stage('Put image into Nexus') {
+		stage('Put image into Nexus') {
 			steps{
 				script {
 					docker.withRegistry( "https://"+ registry, registryCredential ) {
@@ -71,6 +71,6 @@ pipeline {
 				
 				sh 'kubectl --record deployment.apps/revisions-test set image deployment.v1.apps/revisions-test revisions-test="$dockerImageFullName"'
 			}
-		} */
+		}
     }
 }

@@ -11,6 +11,10 @@ pipeline {
 		dockerImage = ''
 	}
 	
+	tools {
+		maven 'MAVEN3'
+	}
+	
     stages {
         
 		stage('Cloning Git') {

@@ -13,6 +13,7 @@ pipeline {
 	
 	tools {
 		maven 'MAVEN3'
+		java 'JAVA8'
 	}
 	
     stages {

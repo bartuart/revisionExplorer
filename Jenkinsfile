@@ -9,7 +9,7 @@ pipeline {
 		dockerImageName = "$registry/$image"
 		dockerImageFullName = "$dockerImageName:$dockerTag"
 		dockerImage = ''
-		JAR_FILE = target/revisionExplorer-0.0.1-SNAPSHOT.jar
+		JAR_FILE = 'target/revisionExplorer-0.0.1-SNAPSHOT.jar'
 	}
 	
 	tools {

@@ -21,6 +21,11 @@ pipeline {
 		stage('Cloning Git') {
 			steps {
 				git 'https://github.com/bartuart/revisionExplorer.git'
+			}
+		}
+		
+		stage('mvn package') {
+			steps {
 				sh 'mvn package'
 			}
 		}

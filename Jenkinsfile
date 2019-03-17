@@ -35,7 +35,7 @@ pipeline {
 				script {
 					//JAR_FILE = 'target/revisionExplorer-0.0.1-SNAPSHOT.jar'
 					//dockerImage = docker.build dockerImageFullName
-					docker.build(dockerImageFullName, "--build-arg JAR_FILE=target/revisionExplorer-0.0.1-SNAPSHOT.jar .")
+					dockerImage = docker.build(dockerImageFullName, "--build-arg JAR_FILE=target/revisionExplorer-0.0.1-SNAPSHOT.jar .")
 				}
 			}
 		}
